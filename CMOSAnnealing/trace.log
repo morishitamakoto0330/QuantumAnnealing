@@ -1,0 +1,162 @@
+== Info:   Trying 113.43.211.51...
+== Info: TCP_NODELAY set
+== Info: Connected to annealing-cloud.com (113.43.211.51) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info: successfully set certificate verify locations:
+== Info:   CAfile: /etc/ssl/cert.pem
+  CApath: none
+== Info: TLSv1.2 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 233 bytes (0xe9)
+0000: ........V.] ....h..Sj...../zm...Q.;.....\.0.,.(.$.......k.9.....
+0040: ............=.5...../.+.'.#.......g.3...E...<./...A.............
+0080: ........`.........annealing-cloud.com...........................
+00c0: ..............................h2.http/1.1
+== Info: TLSv1.2 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 108 bytes (0x6c)
+0000: ...h......z^..^t..+an3...{Mm.8.r....l. VGV.$F......}.........,.d
+0040: )6...Ls.... ........................http/1.1
+== Info: TLSv1.2 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 4633 bytes (0x1219)
+0000: ..........0...0..........^0....SB....e...0...*.H........0a1.0...
+0040: U....JP1.0...U....OSAKA1.0...U....OSAKA1.0...U....SecureCore1.0.
+0080: ..U....SecureCore RSA DV CA0...190618000000Z..201119235959Z0a1!0
+00c0: ...U....Domain Control Validated1.0...U....CoreSSL DV Wildcard1.
+0100: 0...U....*.annealing-cloud.com0.."0...*.H.............0.........
+0140: .a.<4gxF.....3T.W......p..V+G..z.?h>....O.D.._........[..]....
+0180: ..i...T......P.O.>.jnU...Pp~....#...D@..N'?J..6.b{.P...Z...s....
+01c0: ..B.....Ln*G.'..N....."T?H+....9.......bg.. .u.4.g......x.....
+0200: ....D........QQS....**.#.}6}..Q%..aF.%C.g..%..:.....h,.....bT<I.
+0240: .......M0..I0...U.#..0...........-..$..P.'..i0...U......*z..GL*.
+0280: ..q.......,.0...U...........0...U.......0.0...U.%..0...+........
+02c0: .+.......0O..U. .H0F0:..+.....1...20+0)..+.........https://cps.s
+0300: ecurecore-ca.com0...g.....0C..U...<0:08.6.4.2http://crl.secureco
+0340: re-ca.com/SecureCoreRSADVCA.crl0y..+........m0k0>..+.....0..2htt
+0380: p://crt.securecore-ca.com/SecureCoreRSADVCA.crt0)..+.....0...htt
+03c0: p://ocsp.securecore-ca.com05..U....0,..*.annealing-cloud.com..an
+0400: nealing-cloud.com0.....+.....y......p...l.j.w.......q...#...{G8W
+0440: ...R....d6.......kh........H0F.!../...A.S...[.D.!....F+.7.YPk.to
+0480: a.!..c....M..,..~..<.>.k...-%..AK....v.^.s..V...6H}.I.2z........
+04c0: .u..qEX...kh........G0E. J6V..4t%......6.._....J.Y.D..p..!....Q
+0500: Rf..%.4<./oXWYM_^..c....L..).w.oSv.1.1.....Q..w.......).....7...
+0540: ..kh........H0F.!..zwhO..h"}.h... ......k7.6.{B.pf.!...........6
+0580: Lz....DO........&....0...*.H..................n.......z..Z...%..
+05c0: .....5.h.Nb....)....../...%.f"3#......<....Yp.Y<....6B;7+...v.&
+0600: 5....>_CKx...u&...).3..........lw....q.@..h!Y@,....t....W...0.e.
+0640: o...cF....`.<.....Dx....l.:..O...qX.......;_.......7...e.sI...3.
+0680: Wo...Tr....[..R...DG.......-'..=...bR.......0...0............v.A
+06c0: ..S.`b.F..60...*.H........0..1.0...U....US1.0...U....New Jersey1
+0700: .0...U....Jersey City1.0...U....The USERTRUST Network1.0,..U...%
+0740: USERTrust RSA Certification Authority0...150227000000Z..25022623
+0780: 5959Z0a1.0...U....JP1.0...U....OSAKA1.0...U....OSAKA1.0...U....S
+07c0: ecureCore1.0...U....SecureCore RSA DV CA0.."0...*.H.............
+0800: 0..............`.....s...G'VlYR.....>2.....h..,..........s.b3. .
+0840: ......Se i...i.. .V..0_\o.;.*B.......f..sh#.-....q:..C...Ds..._.
+0880: Y....-f..c ..|~.......G..Z......sH6..A.#o%w$..``...R*../....m.9r
+08c0: ..J.......#......hw.>m.@..@L...........i .*.{..Eb.......m(;>....
+0900:  ..Oj............u0..q0...U.#..0...Sy.Z.+J.T.........f.0...U....
+0940: ..........-..$..P.'..i0...U...........0...U.......0.......0...U.
+0980: %..0...+.........+.......0"..U. ..0.0...+.....1...20...g.....0P.
+09c0: .U...I0G0E.C.A.?http://crl.usertrust.com/USERTrustRSACertificati
+0a00: onAuthority.crl0v..+........j0h0?..+.....0..3http://crt.usertrus
+0a40: t.com/USERTrustRSAAddTrustCA.crt0%..+.....0...http://ocsp.usertr
+0a80: ust.com0...*.H.............,0;|..,..- .7h/.....U..2}..Qy ,..6...
+0ac0: ..%o.8. 5.Z*...........2ER..F.. ..QU:.NV.u.[.G.Y.T;............y
+0b00: n...a...TY..i.-..........t...*..........O?.6....vi...B~....]Nl..
+0b40: (..V.QS....5..Y..I...F~.s...."........O...%X.,.&......d..)../..
+0b80: .....+.....|.|...k$... .y..@.h%..UM.).z..C.J.....o.C2.YT..c-....
+0bc0: o...Q..O..;.C....H...P.,D...kB.Db>zdE......K..Gr*.w..1...=..n...
+0c00: .....}.....-o..A....uGNw.C.t=Vf.d.wz"....L.....a.Us.f.....deM...
+0c40: ;.5z..}.K.>..=......".qFp.........{~.I.Z..Z...M..G...i.k......b.
+0c80: ........_..n<W.49..3.!..#....{0..w0.._.........(p[....6c..aC60..
+0cc0: .*.H........0o1.0...U....SE1.0...U....AddTrust AB1&0$..U....AddT
+0d00: rust External TTP Network1"0 ..U....AddTrust External CA Root0..
+0d40: .000530104838Z..200530104838Z0..1.0...U....US1.0...U....New Jers
+0d80: ey1.0...U....Jersey City1.0...U....The USERTRUST Network1.0,..U.
+0dc0: ..%USERTrust RSA Certification Authority0.."0...*.H.............
+0e00: 0..........e.6.......W.v..'.L.P.a.. M.-d......=..........{7(.+G.
+0e40: 9..:.._..}..cB.v..;+...o... ..>..t.....bd......j."<......{.....
+0e80: .Q..gF.Q...T?.3.~l......Q.5..f.rg.!f...x..P:......L....5.WZ....=
+0ec0: .,..T....:M.L..\... =."4.~;hf.D..NFS.3`...S7.sC.2.S....tNi.k.`.
+0f00: ......2...;Qx.g..=V...i....%&k3m.nG.sC.~..f.)|2.cU.....T0....}7.
+0f40: .]:l5\.A....I.......b..f.%.....?.9......L.|.k..^....g.....[..L..
+0f80: [...s.#;-..5Ut.I.IX..6.Q...&}.M....C&..A_@.DD...W..P.WT.>.tc/.P
+0fc0: e..XB.C.L..%GY.....&FJP....x..g...W...c..b.._U..\.(..%9..+..L...
+1000: ?.R.../..........0..0...U.#..0......z4.&...&T....$.T.0...U......
+1040: Sy.Z.+J.T.........f.0...U...........0...U.......0....0...U. ..0.
+1080: 0...U. .0D..U...=0;09.7.5.3http://crl.usertrust.com/AddTrustExte
+10c0: rnalCARoot.crl05..+........)0'0%..+.....0...http://ocsp.usertrus
+1100: t.com0...*.H..............e.7...^.....w.<.......&...ju..y..R`.).
+1140: .......v......F..W......."l3w.{2.n..Z.A:.$....;.%$...*u..pA?|.c6
+1180: !..F.`...g...~...cg..g.k....nC}...l...S.}.....-.FrW5...F.nm7...#
+11c0: ...n@..)V._._.S..Oa.."..V...4.&.{..h?.<.8........qm@B...@.+.e.Hy
+1200: ...c..Ou..|..........!...
+== Info: TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+<= Recv SSL data, 300 bytes (0x12c)
+0000: ...(... .......?.4qN.N......2..<A....@``.... .......I..J..)..g..
+0040: ........\A..r....z..........?.p...T.A.-.}.DPey.8......B...3t..j
+0080: Jfy...5.^k.E....dO.........^....Y".........r.'....E...s.h....LCh
+00c0: ...b..c..}.q.8u.~....o .tR.....M..z.PT7^Bt...Y./.........B..l..6
+0100: ..7.4...N3..x.D....]O*K....W..@....!.dQ.-.. 
+== Info: TLSv1.2 (IN), TLS handshake, Server finished (14):
+<= Recv SSL data, 4 bytes (0x4)
+0000: ....
+== Info: TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+=> Send SSL data, 37 bytes (0x25)
+0000: ...! .&.......:Z...D9.bv<.+...*.U..k%
+== Info: TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 16 bytes (0x10)
+0000: .......L.-....i6
+== Info: TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 16 bytes (0x10)
+0000: ....f.1:....o...
+== Info: SSL connection using TLSv1.2 / ECDHE-RSA-CHACHA20-POLY1305
+== Info: ALPN, server accepted to use http/1.1
+== Info: Server certificate:
+== Info:  subject: OU=Domain Control Validated; OU=CoreSSL DV Wildcard; CN=*.annealing-cloud.com
+== Info:  start date: Jun 18 00:00:00 2019 GMT
+== Info:  expire date: Nov 19 23:59:59 2020 GMT
+== Info:  issuer: C=JP; ST=OSAKA; L=OSAKA; O=SecureCore; CN=SecureCore RSA DV CA
+== Info:  SSL certificate verify result: certificate has expired (10), continuing anyway.
+=> Send header, 222 bytes (0xde)
+0000: POST /api/v1/solve HTTP/1.1
+001d: Host: annealing-cloud.com
+0038: User-Agent: curl/7.64.1
+0051: Accept: */*
+005e: Authorization: Bearer 046eaee43c3a068433eb6a1c89a9c8fc 
+0097: Content-Length: 37
+00ab: Content-Type: application/x-www-form-urlencoded
+00dc: 
+=> Send data, 37 bytes (0x25)
+0000: {"model": [[0,0,0,0,1],[0,1,0,0,-1]]}
+== Info: upload completely sent off: 37 out of 37 bytes
+<= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+<= Recv header, 15 bytes (0xf)
+0000: Server: nginx
+<= Recv header, 37 bytes (0x25)
+0000: Date: Fri, 21 Aug 2020 08:56:54 GMT
+<= Recv header, 47 bytes (0x2f)
+0000: Content-Type: application/json; charset=utf-8
+<= Recv header, 28 bytes (0x1c)
+0000: Transfer-Encoding: chunked
+<= Recv header, 24 bytes (0x18)
+0000: Connection: keep-alive
+<= Recv header, 25 bytes (0x19)
+0000: Cache-Control: no-cache
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 156 bytes (0x9c)
+0000: 91
+0004: {"status":0,"result":{"energies":[-2.0],"execution_time":3449361
+0044: 0,"spins":[[[0,0,-1],[0,1,-1]]]},"job_id":"f23652da-434d-4c2e-81
+0084: 98-15ffa9f73604"}
+0097: 0
+009a: 
+== Info: Connection #0 to host annealing-cloud.com left intact
