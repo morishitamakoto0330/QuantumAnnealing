@@ -4,10 +4,9 @@ import json
 
 access_token = '046eaee43c3a068433eb6a1c89a9c8fc'
 url = 'https://annealing-cloud.com/api/v1/solve'
-model = [[0,0,0,0,1],[0,1,0,0,-1]]
+#model = [[0,0,0,0,1],[0,1,0,0,-1]]
 
 
-#params = {'model': model}
 params = {
   "num_executions": 5,
   "model": [
@@ -39,8 +38,9 @@ data = data.encode('ascii')
 req = urllib.request.Request(url, json.dumps(params).encode(), headers, 'POST')
 
 with urllib.request.urlopen(req) as response:
-	the_page = response.read()
-	print(the_page)
+	json_data = json.loads(response.read())
+	print(json.dumps(json_data, indent=2))
+
 
 
 
