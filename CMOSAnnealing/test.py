@@ -1,6 +1,7 @@
 import urllib.request
 import urllib.parse
 import json
+import acw
 
 access_token = '046eaee43c3a068433eb6a1c89a9c8fc'
 headers = {'Authorization': 'Bearer '+ access_token}
@@ -35,6 +36,7 @@ params = {
 }
 '''
 
+'''
 # Web API version 2
 params = {
 	"type": 3,
@@ -59,19 +61,27 @@ params = {
     "averaged_energy": True
   }
 }
+'''
+
+# set MyModel
+model = acw.setClusteringSample()
+
+params = {
+	"type": 3,
+  "num_executions": 10,
+  "model": model,
+  "parameters": {
+    "temperature_initial": 10.0,
+    "temperature_target": 0.01
+  },
+  "outputs": {
+    "averaged_spins": True,
+    "averaged_energy": True
+  }
+}
 
 
 
-
-
-
-
-data = urllib.parse.urlencode(params)
-
-
-
-
-headers = {'Authorization': 'Bearer '+ access_token}
 
 
 
