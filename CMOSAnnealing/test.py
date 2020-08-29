@@ -63,8 +63,8 @@ params = {
 }
 '''
 
-# set MyModel
-model = acw.setClusteringSample()
+# get MyModel
+model = acw.getClusteringSample()
 
 params = {
 	"type": 3,

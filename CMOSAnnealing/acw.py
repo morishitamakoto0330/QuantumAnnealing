@@ -15,7 +15,7 @@ def print_spins(spins):
 	print(print_string)
 	return
 
-def setClusteringSample():
+def getClusteringSample():
 	# constant value for constraint
 	C = 6
 
