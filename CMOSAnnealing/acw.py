@@ -17,8 +17,98 @@ def print_spins(spins):
 
 def getClusteringSample():
 	# constant value for constraint
+	M = 1
 	C = 6
+	CHAIN = -9
+	# set magnetic field
+	model_mag = [
+		# sigma 1a
+		[0,4,0,4,M],
+		[1,3,1,3,M],
+		[2,2,2,2,M],
+		[3,1,3,1,M],
+		[4,0,4,0,M],
+		# sigma 1b
+		[0,5,0,5,M],
+		[1,6,1,6,M],
+		[2,7,2,7,M],
+		[3,8,3,8,M],
+		[4,9,4,9,M],
+		# sigma 2a
+		[1,5,1,5,M],
+		[2,4,2,4,M],
+		[3,3,3,3,M],
+		[4,2,4,2,M],
+		[4,1,4,1,M],
+		# sigma 2b
+		[1,4,1,4,M],
+		[2,5,2,5,M],
+		[3,6,3,6,M],
+		[4,7,4,7,M],
+		[4,8,4,8,M],
+		# sigma 3a
+		[2,6,2,6,M],
+		[3,5,3,5,M],
+		[4,4,4,4,M],
+		[4,3,4,3,M],
+		[3,2,3,2,M],
+		# sigma 3b
+		[2,3,2,3,M],
+		[3,4,3,4,M],
+		[4,5,4,5,M],
+		[4,6,4,6,M],
+		[3,7,3,7,M],
+	]
+	
+	# set interaction
+	model_int = [
+		# sigma 1a
+		[0,4,1,3,CHAIN],
+		[1,3,2,2,CHAIN],
+		[2,2,3,1,CHAIN],
+		[3,1,4,0,CHAIN],
+		# sigma 1b
+		[0,5,1,6,CHAIN],
+		[1,6,2,7,CHAIN],
+		[2,7,3,8,CHAIN],
+		[3,8,4,9,CHAIN],
+		# sigma 2a
+		[1,5,2,4,CHAIN],
+		[2,4,3,3,CHAIN],
+		[3,3,4,2,CHAIN],
+		[4,2,5,1,CHAIN],
+		# sigma 2b
+		[1,4,2,5,CHAIN],
+		[2,5,3,6,CHAIN],
+		[3,6,4,7,CHAIN],
+		[4,7,4,8,CHAIN],
+		# sigma 3a
+		[2,6,3,5,CHAIN],
+		[3,5,4,4,CHAIN],
+		[4,4,4,3,CHAIN],
+		[4,3,3,2,CHAIN],
+		# sigma 3b
+		[2,3,3,4,CHAIN],
+		[3,4,4,5,CHAIN],
+		[4,5,4,6,CHAIN],
+		[4,6,3,7,CHAIN],
+		# distance=√13=3.61
+		[3,1,3,2,3.61],
+		[4,0,4,1,3.61],
+		[3,7,3,8,3.61],
+		[4,8,4,9,3.61],
+		# distance=√2=1.41
+		[4,2,4,3,1.41],
+		[4,6,4,7,1.41],
+		# constraint
+		[0,4,0,5,C],
+		[1,4,1,5,C],
+		[3,4,3,5,C],
+	]
+	model = model_mag + model_int
 
+	return model
+'''
 	# set magnetic field
 	model_mag = [
 		# sigma 1a
@@ -165,10 +255,7 @@ def getClusteringSample():
 		[3,6,3,7,C],
 		[5,6,5,7,C],
 	]
-
-	model = model_mag + model_int
-
-	return model
+'''
 
 
 
