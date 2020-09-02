@@ -1,26 +1,74 @@
 def print_spins(spins):
 	print_string = ""
-	y_prev = 0
 	for exec_index, spin in enumerate(spins):
-		#print("{0}回目の実行時のスピン".format(exec_index + 1))
 		print_string += "\n\n{0}回目の実行時のスピン\n".format(exec_index + 1)
+
+		x_prev = -1
+		y_prev = -1
+
 		for x,y,p in spin:
-			if y != y_prev:
-				print_string += "\n"
-			#print("({0}, {1}) = {2}".format(x, y, p))
+			if y > y_prev:
+				for i in range(y - y_prev):
+					print_string += "\n"
+					x_prev = -1
+			if (x - 1) > x_prev:
+				for i in range(x - 1 - x_prev):
+					print_string += "{0:>5}".format(0)
+
 			print_string += "{0:>5}".format(p)
 
+			x_prev = x
 			y_prev = y
-
+			
 	print(print_string)
 	return
 
 def getClusteringSample():
 	# constant value for constraint
 	M = 1
-	C = 6
-	CHAIN = -9
+	C = 3
+	CHAIN = -3
 	# set magnetic field
+	model_mag = [
+		#sigma 1a
+		[0,1,0,1,M],
+		[1,0,1,0,M],
+		#sigma 1b
+		[3,1,3,1,M],
+		[2,0,2,0,M],
+		#sigma 2a
+		[1,1,1,1,M],
+		#sigma 2b
+		[2,1,2,1,M],
+		#sigma 3a
+		[1,2,1,2,M],
+		#sigma 3b
+		[2,2,2,2,M],
+	]
+	# set interaction
+	model_int = [
+		#sigma 1a
+		[0,1,1,0,CHAIN],
+		#sigma 1b
+		[3,1,2,0,CHAIN],
+		# distance=√13=3.61
+		[0,1,1,1,3.61],
+		[0,1,1,2,3.61],
+		[2,1,3,1,3.61],
+		[2,2,3,1,3.61],
+		# distance=√2=1.41
+		[1,1,1,2,1.41],
+		[2,1,2,2,1.41],
+		# constraint
+		[1,0,2,0,C],
+		[1,1,2,1,C],
+		[1,2,2,2,C],
+	]
+
+	model = model_mag + model_int
+	return model
+
+'''
 	model_mag = [
 		# sigma 1a
 		[0,4,0,4,M],
@@ -105,9 +153,7 @@ def getClusteringSample():
 		[1,4,1,5,C],
 		[3,4,3,5,C],
 	]
-	model = model_mag + model_int
-
-	return model
+'''
 '''
 	# set magnetic field
 	model_mag = [

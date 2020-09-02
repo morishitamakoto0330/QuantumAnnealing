@@ -3,8 +3,10 @@ import acw
 import os
 
 # read result.txt as JSON data
+#f = open('hoge.txt','r')
 #f = open('result.txt','r')
-f = open('result_clustering_sample_2.txt','r')
+#f = open('result_clustering_sample_2.txt','r')
+f = open('result_clustering_sample_3.txt','r')
 result = f.read()
 result_json = json.loads(result)
 
