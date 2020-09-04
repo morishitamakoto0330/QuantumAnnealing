@@ -23,6 +23,41 @@ def print_spins(spins):
 	print(print_string)
 	return
 
+def createClusteringIsingModel(N, distance):
+	# constant value for constraint
+	M = 1
+	C = 3
+	CHAIN = -3
+	# set full connection model
+	model = [[0,0,0,0,0]]
+
+	x = y = 0
+	x_prev = y_prev = 0
+	# right side
+	for i in range(N - 1):
+		x = N - 2 - i
+		y = i
+		# magnetic field
+		model.append([x, y, x, y, M])
+		# chain
+		if i != 0:
+			model.append([x_prev, y_prev, x, y, CHAIN])
+		x_prev = x
+		y_prev = y
+	# left side
+	for i in range(N - 1):
+		x = N - 1 + i
+		y = i
+		# magnetic field
+		model.append([x, y, x, y, M])
+		# chain
+		if i != 0:
+			model.append([x_prev, y_prev, x, y, CHAIN])
+		x_prev = x
+		y_prev = y
+
+	return model
+
 def getClusteringSample():
 	# constant value for constraint
 	M = 1

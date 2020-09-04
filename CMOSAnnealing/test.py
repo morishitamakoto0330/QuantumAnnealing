@@ -64,7 +64,8 @@ params = {
 '''
 
 # get MyModel
-model = acw.getClusteringSample()
+#model = acw.getClusteringSample()
+model = acw.createClusteringIsingModel(5, [])
 
 params = {
 	"type": 3,
