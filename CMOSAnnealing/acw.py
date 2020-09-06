@@ -34,27 +34,20 @@ def createClusteringIsingModel(N, distance):
 	x = y = 0
 	x_prev = y_prev = 0
 	# right side
-	for i in range(N - 1):
-		x = N - 2 - i
-		y = i
-		# magnetic field
-		model.append([x, y, x, y, M])
-		# chain
-		if i != 0:
-			model.append([x_prev, y_prev, x, y, CHAIN])
-		x_prev = x
-		y_prev = y
+	for i in range(int((N + 1)/2)):
+		for j in range(N - 1):
+			x = N - 2 + i - j
+			y = i + j
+			if y > N - 2:
+				y = N - 1 - y%(N - 2)
+			# magnetic field
+			model.append([x, y, x, y, M])
+			# chain
+			if j != 0:
+				model.append([x_prev, y_prev, x, y, CHAIN])
+			x_prev = x
+			y_prev = y
 	# left side
-	for i in range(N - 1):
-		x = N - 1 + i
-		y = i
-		# magnetic field
-		model.append([x, y, x, y, M])
-		# chain
-		if i != 0:
-			model.append([x_prev, y_prev, x, y, CHAIN])
-		x_prev = x
-		y_prev = y
 
 	return model
 
