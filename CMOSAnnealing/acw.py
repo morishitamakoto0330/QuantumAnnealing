@@ -33,7 +33,8 @@ def createClusteringIsingModel(N, distance):
 
 	x = y = 0
 	x_prev = y_prev = 0
-	# right side
+	# left side
+	#print("left side ------------")
 	for i in range(int((N + 1)/2)):
 		for j in range(N - 1):
 			x = N - 2 + i - j
@@ -41,15 +42,34 @@ def createClusteringIsingModel(N, distance):
 			if y > N - 2:
 				y = N - 1 - y%(N - 2)
 			# magnetic field
+			#print("({0}, {1})".format(x, y))
 			model.append([x, y, x, y, M])
 			# chain
 			if j != 0:
 				model.append([x_prev, y_prev, x, y, CHAIN])
 			x_prev = x
 			y_prev = y
-	# left side
+	# right side
+	#print("right side ------------")
+	for i in range(int((N + 1)/2)):
+		for j in range(N - 1):
+			x = N - 1 - i + j
+			y = i + j
+			if y > N - 2:
+				y = N - 1 - y%(N - 2)
+			# magnetic field
+			#print("({0}, {1})".format(x, y))
+			model.append([x, y, x, y, M])
+			# chain
+			if j != 0:
+				model.append([x_prev, y_prev, x, y, CHAIN])
+			x_prev = x
+			y_prev = y
+	
+	# delete duplication
+	_model = list(set(map(tuple, model)))
 
-	return model
+	return _model
 
 def getClusteringSample():
 	# constant value for constraint
