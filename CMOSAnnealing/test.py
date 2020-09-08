@@ -4,6 +4,7 @@ import json
 import acw
 
 N = 6
+distance = acw.getRandomDistance(N)
 
 access_token = '046eaee43c3a068433eb6a1c89a9c8fc'
 headers = {'Authorization': 'Bearer '+ access_token}
@@ -67,7 +68,7 @@ params = {
 
 # get MyModel
 #model = acw.getClusteringSample()
-model = acw.createClusteringIsingModel(N, [])
+model = acw.createClusteringIsingModel(N, distance)
 
 #print(model)
 

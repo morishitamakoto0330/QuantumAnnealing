@@ -1,3 +1,22 @@
+import math
+import random
+
+def getRandomDistance(N):
+	min_number = 0
+	max_number = 10
+	points = [[random.randint(min_number, max_number), random.randint(min_number, max_number)] for i in range(N)]
+
+	distance = []
+	tmp = 0.0
+
+	for i in range(N - 1):
+		_distance = []
+		for j in range(i + 1, N):
+			_distance.append(math.sqrt(math.pow(points[i][0] - points[j][0], 2) + math.pow(points[i][1] - points[j][1], 2)))
+		distance.append(_distance)
+
+	return distance
+
 def print_spins(spins):
 	print_string = ""
 	for exec_index, spin in enumerate(spins):
@@ -26,8 +45,8 @@ def print_spins(spins):
 def createClusteringIsingModel(N, distance):
 	# constant value for constraint
 	M = 1
-	C = 200
-	CHAIN = -100
+	C = 3
+	CHAIN = -3
 	# set full connection model
 	model = [[0,0,0,0,0]]
 
@@ -66,11 +85,23 @@ def createClusteringIsingModel(N, distance):
 			y_prev = y
 	
 	##################################################
-	# set constraint for clustering
+	# set constraint for representing clusters
 	##################################################
 	model.append([N - 2, 0, N - 1, 0, C])
 	for i in range(1, int(N/2)):
 		model.append([N - 2, i*2 - 1, N - 1, i*2 - 1, C])
+
+	##################################################
+	# set distance constraint 
+	##################################################
+	for i in range(int(N/2) - 1):
+		x = i*2
+		y = N - 2
+		for j in range(i, int(N/2) - 1):
+			model.append([x, y, x + 1, y, int(distance[i][i + j])])
+			x += 1
+			y -= 1
+	
 
 	# delete duplication
 	_model = list(set(map(tuple, model)))
