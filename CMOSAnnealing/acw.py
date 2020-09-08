@@ -26,15 +26,17 @@ def print_spins(spins):
 def createClusteringIsingModel(N, distance):
 	# constant value for constraint
 	M = 1
-	C = 3
-	CHAIN = -3
+	C = 200
+	CHAIN = -100
 	# set full connection model
 	model = [[0,0,0,0,0]]
 
+	##################################################
+	# set magnetic field and chaining
+	##################################################
 	x = y = 0
 	x_prev = y_prev = 0
 	# left side
-	#print("left side ------------")
 	for i in range(int((N + 1)/2)):
 		for j in range(N - 1):
 			x = N - 2 + i - j
@@ -42,7 +44,6 @@ def createClusteringIsingModel(N, distance):
 			if y > N - 2:
 				y = N - 1 - y%(N - 2)
 			# magnetic field
-			#print("({0}, {1})".format(x, y))
 			model.append([x, y, x, y, M])
 			# chain
 			if j != 0:
@@ -50,7 +51,6 @@ def createClusteringIsingModel(N, distance):
 			x_prev = x
 			y_prev = y
 	# right side
-	#print("right side ------------")
 	for i in range(int((N + 1)/2)):
 		for j in range(N - 1):
 			x = N - 1 - i + j
@@ -58,7 +58,6 @@ def createClusteringIsingModel(N, distance):
 			if y > N - 2:
 				y = N - 1 - y%(N - 2)
 			# magnetic field
-			#print("({0}, {1})".format(x, y))
 			model.append([x, y, x, y, M])
 			# chain
 			if j != 0:
@@ -66,6 +65,13 @@ def createClusteringIsingModel(N, distance):
 			x_prev = x
 			y_prev = y
 	
+	##################################################
+	# set constraint for clustering
+	##################################################
+	model.append([N - 2, 0, N - 1, 0, C])
+	for i in range(1, int(N/2)):
+		model.append([N - 2, i*2 - 1, N - 1, i*2 - 1, C])
+
 	# delete duplication
 	_model = list(set(map(tuple, model)))
 

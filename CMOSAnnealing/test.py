@@ -3,6 +3,8 @@ import urllib.parse
 import json
 import acw
 
+N = 6
+
 access_token = '046eaee43c3a068433eb6a1c89a9c8fc'
 headers = {'Authorization': 'Bearer '+ access_token}
 #url = 'https://annealing-cloud.com/api/v1/solve'
@@ -65,7 +67,10 @@ params = {
 
 # get MyModel
 #model = acw.getClusteringSample()
-model = acw.createClusteringIsingModel(5, [])
+model = acw.createClusteringIsingModel(N, [])
+
+#print(model)
+
 
 params = {
 	"type": 3,
