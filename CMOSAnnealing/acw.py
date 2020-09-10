@@ -45,8 +45,8 @@ def print_spins(spins):
 def createClusteringIsingModel(N, distance):
 	# constant value for constraint
 	M = 1
-	C = 3
-	CHAIN = -3
+	C = 20
+	CHAIN = -20
 	# set full connection model
 	model = [[0,0,0,0,0]]
 
@@ -97,10 +97,15 @@ def createClusteringIsingModel(N, distance):
 	for i in range(int(N/2) - 1):
 		x = i*2
 		y = N - 2
-		for j in range(i, int(N/2) - 1):
-			model.append([x, y, x + 1, y, int(distance[i][i + j])])
+		_x = 2*N - 3 - x
+		_y = y
+		for j in range(int(N/2) - 1 - i):
+			model.append([x, y, x + 1, y, int(distance[i][j])])
+			model.append([_x, _y, _x - 1, _y, int(distance[i][j])])
 			x += 1
 			y -= 1
+			_x -= 1
+			_y -= 1
 	
 
 	# delete duplication

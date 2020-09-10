@@ -3,8 +3,21 @@ import urllib.parse
 import json
 import acw
 
-N = 6
-distance = acw.getRandomDistance(N)
+N = 8
+distance = acw.getRandomDistance(int(N/2))
+
+with open("distance.txt", mode="w") as f:
+	for _d in distance:
+		for d in _d:
+			f.write(str(int(d)))
+			f.write(" ")
+		f.write("\n")
+'''
+distance = [
+	[1212, 1313],
+	[2323]
+]
+'''
 
 access_token = '046eaee43c3a068433eb6a1c89a9c8fc'
 headers = {'Authorization': 'Bearer '+ access_token}
