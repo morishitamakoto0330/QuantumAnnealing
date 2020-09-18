@@ -4,6 +4,7 @@ import json
 import acw
 
 N = 8
+'''
 distance = acw.getRandomDistance(int(N/2))
 
 with open("distance.txt", mode="w") as f:
@@ -13,9 +14,28 @@ with open("distance.txt", mode="w") as f:
 			f.write(" ")
 		f.write("\n")
 '''
+
+'''
 distance = [
-	[1212, 1313],
-	[2323]
+	[1,3],
+	[2],
+]
+'''
+
+distance = [
+	[2,12,14],
+	[10,12],
+	[2],
+]
+
+'''
+distance = [
+	[2,4,5,10,12,14],
+	[2,3,8,10,12],
+	[1,6,8,10],
+	[3,5,7],
+	[2,4],
+	[2],
 ]
 '''
 

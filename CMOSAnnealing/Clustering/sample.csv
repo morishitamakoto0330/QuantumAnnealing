@@ -1,4 +1,4 @@
-LoopSize,Operation,OptimalNumberOfThreads
+MatrixSize,Operation,OptimalNumberOfThreads
 16,512,4
 32,2048,4
 64,8192,4

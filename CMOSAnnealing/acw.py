@@ -45,8 +45,8 @@ def print_spins(spins):
 def createClusteringIsingModel(N, distance):
 	# constant value for constraint
 	M = 1
-	C = 20
-	CHAIN = -20
+	C = 30
+	CHAIN = -30
 	# set full connection model
 	model = [[0,0,0,0,0]]
 
