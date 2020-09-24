@@ -24,7 +24,9 @@ model = H.compile()
 
 feed_dict = {"penalty": -20.0}
 qubo, offset = model.to_qubo(feed_dict=feed_dict)
+ising = model.to_ising(feed_dict=feed_dict)
 
+print(ising)
 
 raw_solution = solve_qubo(qubo)
 
