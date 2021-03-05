@@ -1,5 +1,5 @@
-import math
-import random
+import math, random, copy
+import numpy as np
 
 def getRandomDistance(N):
 	min_number = 0
@@ -18,28 +18,31 @@ def getRandomDistance(N):
 	return distance
 
 def print_spins(spins):
-	print_string = ""
-	for exec_index, spin in enumerate(spins):
-		print_string += "\n\n{0}回目の実行時のスピン\n".format(exec_index + 1)
-
-		x_prev = -1
-		y_prev = -1
-
+	# get index
+	x_max = -1
+	y_max = -1
+	for spin in spins:
 		for x,y,p in spin:
-			if y > y_prev:
-				for i in range(y - y_prev):
-					print_string += "\n"
-					x_prev = -1
-			if (x - 1) > x_prev:
-				for i in range(x - 1 - x_prev):
-					print_string += "{0:>5}".format(0)
-
-			print_string += "{0:>5}".format(p)
-
-			x_prev = x
-			y_prev = y
-			
+			if x > x_max:
+				x_max = x
+			if y > y_max:
+				y_max = y
+	# spins -> spin list dim=(exe_time, x, y)
+	spin_list = [[0]*(x_max + 1) for i in range(y_max + 1)]
+	spins_list = [copy.deepcopy(spin_list) for i in range(len(spins))]
+	for i, spin in enumerate(spins):
+		for x,y,p in spin:
+			spins_list[i][x][y] = p
+	# spin list -> string
+	print_string = ''
+	for i, s1 in enumerate(spins_list):
+		print_string += '\n\n{0}回目の実行時のスピン\n'.format(i + 1)
+		for x, s2 in enumerate(s1):
+			for y, p in enumerate(s2):
+				print_string += '{0:>5}'.format(p)
+			print_string += '\n'
 	print(print_string)
+
 	return
 
 def createClusteringIsingModel(N, distance):
