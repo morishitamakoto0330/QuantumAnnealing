@@ -1,20 +1,27 @@
 import urllib.request
 import urllib.parse
 import json
-
 import acw
+
+from sklearn import datasets
 from secret import get_token
 
 access_token = get_token()
 headers = {'Authorization': 'Bearer '+ access_token}
 url = 'https://annealing-cloud.com/api/v2/solve'
 
+dataset = datasets.load_iris()
+_x, _y = dataset.data, dataset.target
+mask = np.bitwise_or(_y == 0, _y == 1)
+x = _x[mask][:, 2:]
+y = _y[mask]
 
 
 params = {
 	"type": 4,
   "num_executions": 10,
-  "model": [[0,0,0,0,1],[1,1,1,1,1],[1,0,1,0,1],[0,0,1,0,100],[0,0,1,1,-100]],
+#  "model": [[0,0,0,0,1],[1,1,1,1,1],[1,0,1,0,1],[0,0,1,0,100],[0,0,1,1,-100]],
+  "model": model,
   "parameters": {
     "temperature_initial": 10.0,
     "temperature_target": 0.01
