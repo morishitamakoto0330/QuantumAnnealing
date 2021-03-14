@@ -1,5 +1,6 @@
 import copy
 import numpy as np
+from decimal import Decimal, ROUND_HALF_UP
 from sklearn import datasets
 from matplotlib import pyplot as plt
 
@@ -102,7 +103,46 @@ for index, (_, x1, _) in enumerate(x_sorted):
 
 print('座標割り当て その2')
 print(x_mapped[:10])
-print(my_plt(x_mapped))
+#print(my_plt(x_mapped))
+
+# イジングモデル設定書き出し
+plt.scatter(x_mapped[:,0], x_mapped[:,1])
+plt.grid()
+
+x_prev = -1
+y_prev = -1
+index_prev = -1
+
+file_path = './iris_ising_model.txt'
+with open(file_path, mode='w') as f:
+
+	for (x, y, index) in x_mapped:
+		# 磁場の設定
+		p = Decimal(1.000000)
+		f.write('{0},{1},{2},{3},{4}\n'.format(int(x), int(y), int(x), int(y), p))
+		if y == y_prev:
+			# x軸方向の相互作用の設定
+			p = Decimal(str(distance[int(index_prev)][int(index)])).quantize(Decimal('0.000001'), rounding=ROUND_HALF_UP)
+			f.write('{0},{1},{2},{3},{4}\n'.format(int(x_prev), int(y_prev), int(x), int(y), p))
+			plt.plot((x_prev, x), (y_prev, y), color='red')
+		(x_prev, y_prev, index_prev) = (x, y, index)
+		for (_x, _y, _index) in x_mapped:
+			if _x == x and (_y - y) == 1:
+				# y軸方向の相互作用の設定
+				p = Decimal(str(distance[int(index)][int(_index)])).quantize(Decimal('0.000001'), rounding=ROUND_HALF_UP)
+				f.write('{0},{1},{2},{3},{4}\n'.format(int(x), int(y), int(_x), int(_y), p))
+				plt.plot((x, _x), (y, _y), color='green')
+				break
+
+plt.show()
+
+
+
+
+
+
+
+
 
 
 

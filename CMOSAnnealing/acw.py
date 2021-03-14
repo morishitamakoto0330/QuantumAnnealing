@@ -28,7 +28,7 @@ def print_spins(spins):
 			if y > y_max:
 				y_max = y
 	# spins -> spin list dim=(exe_time, x, y)
-	spin_list = [[0]*(x_max + 1) for i in range(y_max + 1)]
+	spin_list = [[0]*(y_max + 1) for i in range(x_max + 1)]
 	spins_list = [copy.deepcopy(spin_list) for i in range(len(spins))]
 	for i, spin in enumerate(spins):
 		for x,y,p in spin:
