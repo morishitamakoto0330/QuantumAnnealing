@@ -1,5 +1,6 @@
 import math, random, copy
 import numpy as np
+from matplotlib import pyplot as plt
 
 def getRandomDistance(N):
 	min_number = 0
@@ -41,7 +42,18 @@ def print_spins(spins):
 			for y, p in enumerate(s2):
 				print_string += '{0:>5}'.format(p)
 			print_string += '\n'
-	print(print_string)
+	#print(print_string)
+	for x, s1 in enumerate(spins_list[-1]):
+		for y, p in enumerate(s1):
+			if p == 1:
+				plt.scatter(x, y, color='red')
+			elif p == -1:
+				plt.scatter(x, y, color='blue')
+			else:
+				#plt.scatter(x, y, color='black')
+				pass
+	plt.grid()
+	plt.show()
 
 	return
 

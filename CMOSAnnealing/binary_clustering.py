@@ -14,7 +14,12 @@ url = 'https://annealing-cloud.com/api/v2/solve'
 
 # イジングモデル読み込み
 model = np.zeros((1, 5))
+
 file_path = './iris_ising_model.txt'
+#file_path = './IsingModel/natural.txt'
+#file_path = './IsingModel/natural_5time.txt'
+#file_path = './IsingModel/minus_average_5time.txt'
+
 with open(file_path, mode='r') as f:
 	line_list = f.read().split('\n')
 	for line in line_list:
