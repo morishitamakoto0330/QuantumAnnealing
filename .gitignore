@@ -1,4 +1,5 @@
 .git/
+.gitignore
 */secret.py
 __pycache__
 量子ソフトウェア研究会/
