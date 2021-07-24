@@ -1,9 +1,7 @@
 import urllib.request
 import urllib.parse
 import json
-import numpy as np
 
-from sklearn import datasets
 from secret import get_token
 
 # トークン設定
@@ -36,9 +34,6 @@ req = urllib.request.Request(url, json.dumps(params).encode(), headers, 'POST')
 with urllib.request.urlopen(req) as response:
 	json_data = json.loads(response.read())
 	print(json.dumps(json_data, indent=2))
-
-
-
 
 
 

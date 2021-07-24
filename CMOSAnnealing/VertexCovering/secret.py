@@ -1,4 +1,4 @@
 def get_token():
-	return '0fdbd6c010cd2ff662632ed48d267f9c'
+	return '2c38c6871555ae0bec6f33582a1ec96f'
 
 
