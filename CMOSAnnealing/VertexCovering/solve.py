@@ -2,6 +2,7 @@ import urllib.request
 import urllib.parse
 import json
 
+import vertex_covering as vc
 from secret import get_token
 
 # トークン設定
@@ -9,11 +10,15 @@ access_token = get_token()
 headers = {'Authorization': 'Bearer '+ access_token}
 url = 'https://annealing-cloud.com/api/v2/solve'
 
+# 頂点被覆問題の設定
+N = 2
+model = vc.set(N)
+
 # APIに渡すパラメータ
 params = {
 	"type": 4,
-  "num_executions": 10,
-  "model": [[0,0,0,0,1],[0,1,0,1,1]],
+  "num_executions": 1,
+  "model": model,
   "parameters": {
     "temperature_initial": 10.0,
     "temperature_target": 0.01
