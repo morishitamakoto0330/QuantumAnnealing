@@ -15,4 +15,7 @@ client.parameters.temperature_target = 0.02
 
 result = client.solve(f)
 
+array_result = [f"energy = {s.energy}, q[0][0] = {s.values[0]}, q[1][1] = {s.values[513]}" for s in result]
+print(array_result)
+
 
