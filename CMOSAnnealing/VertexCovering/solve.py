@@ -1,8 +1,9 @@
-from secret import get_token
-
 from amplify import BinaryPoly, gen_symbols, sum_poly, Solver
 from amplify.constraint import greater_equal
 from amplify.client import HitachiClient
+
+from secret import get_token
+import utils
 
 # 問題設定（正方格子グラフにおける頂点被覆）
 N = 2         # 問題サイズ
@@ -28,8 +29,8 @@ client.parameters.temperature_target = 0.02
 solver = Solver(client)
 
 # 重み変更して複数回アニーリング
-w_init = 0.1
-num = 10
+w_init = 1
+num = 1
 for i in range(num):
     w1 = i * w_init
     for j in range(num):
@@ -40,6 +41,6 @@ for i in range(num):
         result = solver.solve(energy_function)
         # 結果出力
         print('(w1, w2)=({0}, {1})'.format(w1, w2))
-        print([s.values for s in result])
+        print(utils.print_solver_result(N, result))
 
 
