@@ -6,7 +6,7 @@ from secret import get_token
 import utils
 
 # 問題設定（正方格子グラフにおける頂点被覆）
-N = 2         # 問題サイズ
+N = 4         # 問題サイズ
 q = gen_symbols(BinaryPoly, N, N)
 
 # コスト関数（w1 で調整）
@@ -29,18 +29,18 @@ client.parameters.temperature_target = 0.02
 solver = Solver(client)
 
 # 重み変更して複数回アニーリング
-w_init = 1
+w_step = 1
 num = 1
-for i in range(num):
-    w1 = i * w_init
-    for j in range(num):
-        w2 = j * w_init
+for i in range(1, num + 1):
+    w1 = i * w_step
+    for j in range(1, num + 1):
+        w2 = j * w_step
         # 最終的なエネルギー関数
         energy_function = w1*cost_function + w2*constraint
         # 解く
         result = solver.solve(energy_function)
         # 結果出力
         print('(w1, w2)=({0}, {1})'.format(w1, w2))
-        print(utils.print_solver_result(N, result))
+        print('{0}'.format(utils.print_solver_result(N, result)))
 
 
