@@ -6,7 +6,7 @@ from secret import get_token
 import utils
 
 # 問題設定（正方格子グラフにおける頂点被覆）
-N = 4         # 問題サイズ
+N = 2         # 問題サイズ
 q = gen_symbols(BinaryPoly, N, N)
 
 # コスト関数（w1 で調整）
@@ -40,7 +40,9 @@ for i in range(1, num + 1):
         # 解く
         result = solver.solve(energy_function)
         # 結果出力
+        result_str, result_is_optimum = utils.print_solver_result(N, result)
         print('(w1, w2)=({0}, {1})'.format(w1, w2))
-        print('{0}'.format(utils.print_solver_result(N, result)))
+        print('{0}'.format(result_str))
+        print('{0}'.format(result_is_optimum))
 
 

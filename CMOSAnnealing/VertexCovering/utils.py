@@ -1,3 +1,16 @@
+def is_optimum(N, l):
+    isOptimum = True
+    # スピンの並びが交互に0, 1, 0, 1, ...となっているかどうかの判定
+    for i in range(N):
+        spin_prev = -1
+        for j in range(N):
+            spin = l[i*N + j]
+            if spin_prev == spin:
+                isOptimum = False
+                break
+            spin_prev = spin
+    return isOptimum
+
 def print_solver_result(N, result):
     d = {}
     l = [0]*(N*N)
@@ -19,8 +32,6 @@ def print_solver_result(N, result):
             print_str += str(l[i*N + j])
         print_str += '\n'
     print_str += '---------------\n'
-    # 総量子ビットの半分のスピンが1になっているか
-    print_str += str(N*N/2 == count_one)
-    return print_str
+    return print_str, is_optimum(N, l)
 
 
