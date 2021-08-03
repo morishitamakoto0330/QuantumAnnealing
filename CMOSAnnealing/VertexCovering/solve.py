@@ -33,6 +33,10 @@ w_step = 0.1         # 重み変更幅
 num_steps = 10       # 重み変更回数
 num_execution = 100  # アニーリング実行回数
 
+print('N, w_a, w_b, 最適回答率[%]')
+# 結果出力用ファイルを開く
+f = open('result.txt', 'w')
+
 for i in range(1, num_steps + 1):
     w_a = i * w_step
     for j in range(1, num_steps + 1):
@@ -45,13 +49,15 @@ for i in range(1, num_steps + 1):
             # 解く
             result = solver.solve(energy_function)
             # 結果出力
-            result_str, result_is_optimum = utils.print_solver_result(N, result)
+            _, result_is_optimum = utils.print_solver_result(N, result)
             if result_is_optimum:
                 num_optimum += 1
-            #print('(w1, w2)=({0}, {1})'.format(w1, w2))
-            #print('{0}'.format(result_str))
-            #print('{0}'.format(result_is_optimum))
         percentage_of_optimum = (num_optimum / num_execution) * 100
-        print('N={0}, (w_a, w_b)=({1}, {2}): 最適回答率{3}[%]'.format(N, w_a, w_b, percentage_of_optimum))
-
+        result_str = '{0}, {1}, {2}, {3}'.format(N, w_a, w_b, percentage_of_optimum)
+        # ログ出力
+        print(result_str)
+        # ファイル書き込み
+        f.write(result_str)
+# 結果出力用ファイルを閉じる
+f.close()
 
