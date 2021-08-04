@@ -21,6 +21,7 @@ constraint = constraint_x + constraint_y
 client = HitachiClient()
 client.token = get_token()
 client.parameters.num_executions = 1
+client.parameters.outputs.execution_time = True
 client.parameters.temperature_num_steps = 10
 client.parameters.temperature_step_length = 100
 client.parameters.temperature_initial = 100.0
@@ -30,8 +31,8 @@ solver = Solver(client)
 
 # 重み変更してアニーリング実行
 w_step = 0.1         # 重み変更幅
-num_steps = 10       # 重み変更回数
-num_execution = 100  # アニーリング実行回数
+num_steps = 1       # 重み変更回数
+num_execution = 1  # アニーリング実行回数
 
 print('N, w_a, w_b, 最適回答率[%]')
 # 結果出力用ファイルを開く
@@ -53,7 +54,7 @@ for i in range(1, num_steps + 1):
             if result_is_optimum:
                 num_optimum += 1
         percentage_of_optimum = (num_optimum / num_execution) * 100
-        result_str = '{0}, {1}, {2}, {3}'.format(N, w_a, w_b, percentage_of_optimum)
+        result_str = '{0}, {1}, {2}, {3}\n'.format(N, w_a, w_b, percentage_of_optimum)
         # ログ出力
         print(result_str)
         # ファイル書き込み
