@@ -5,6 +5,8 @@ from amplify.client import HitachiClient
 from secret import get_token
 import utils
 
+import time
+
 # 問題設定（正方格子グラフにおける頂点被覆）
 N = 2         # 問題サイズ
 q = gen_symbols(BinaryPoly, N, N)
@@ -32,9 +34,9 @@ solver = Solver(client)
 # 重み変更してアニーリング実行
 w_step = 0.1         # 重み変更幅
 num_steps = 1       # 重み変更回数
-num_execution = 1  # アニーリング実行回数
+num_execution = 1     # アニーリング実行回数
 
-print('N, w_a, w_b, 最適回答率[%]')
+print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
 # 結果出力用ファイルを開く
 f = open('result.txt', 'w')
 
@@ -46,15 +48,23 @@ for i in range(1, num_steps + 1):
         energy_function = w_a*constraint + w_b*cost_function
 
         num_optimum = 0      # 最適解が導かれた回数
+        sum_exe_time = 0.0   # 実行時間の総和
         for _ in range(num_execution):
-            # 解く
+            # 通信時間を含む計算実行時間の計測
+            start_time = time.perf_counter()
             result = solver.solve(energy_function)
+            end_time = time.perf_counter()
+
+            sum_exe_time += end_time - start_time
             # 結果出力
             _, result_is_optimum = utils.print_solver_result(N, result)
             if result_is_optimum:
                 num_optimum += 1
+        # 最適回答率
         percentage_of_optimum = (num_optimum / num_execution) * 100
-        result_str = '{0}, {1}, {2}, {3}\n'.format(N, w_a, w_b, percentage_of_optimum)
+        # 実行時間
+        exe_time = sum_exe_time / num_execution
+        result_str = '{0}, {1}, {2}, {3}, {4}\n'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
         # ログ出力
         print(result_str)
         # ファイル書き込み
