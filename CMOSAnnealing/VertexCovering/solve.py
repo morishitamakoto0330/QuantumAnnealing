@@ -65,7 +65,7 @@ for N in range(2, 16, 2):
             percentage_of_optimum = (num_optimum / num_execution) * 100
             # 実行時間
             exe_time = sum_exe_time / num_execution
-            result_str = '{0}, {1}, {2}, {3}, {4}\n'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
+            result_str = '{0}, {1}, {2}, {3}, {4}'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
             # ログ出力
             print(result_str)
             # ファイル書き込み
