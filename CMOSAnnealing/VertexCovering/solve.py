@@ -33,8 +33,8 @@ for N in range(2, 16, 2):
     solver = Solver(client)
 
     # 重み変更してアニーリング実行
-    w_step = 0.01           # 重み変更幅
-    num_steps = 500         # 重み変更回数
+    w_step = 0.1           # 重み変更幅
+    num_steps = 50         # 重み変更回数
     num_execution = 100     # アニーリング実行回数
 
     print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
@@ -65,9 +65,9 @@ for N in range(2, 16, 2):
             percentage_of_optimum = (num_optimum / num_execution) * 100
             # 実行時間
             exe_time = sum_exe_time / num_execution
-            result_str = '{0}, {1}, {2}, {3}, {4}'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
+            result_str = '{0}, {1}, {2}, {3}, {4}\n'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
             # ログ出力
-            print(result_str)
+            print(result_str, end="")
             # ファイル書き込み
             f.write(result_str)
     # 結果出力用ファイルを閉じる
