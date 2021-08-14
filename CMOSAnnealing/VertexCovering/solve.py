@@ -34,7 +34,7 @@ for N in range(2, 16, 2):
 
     # 重み変更してアニーリング実行
     w_step = 0.1           # 重み変更幅
-    num_steps = 50         # 重み変更回数
+    num_steps = 10         # 重み変更回数
     num_execution = 100     # アニーリング実行回数
 
     print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
