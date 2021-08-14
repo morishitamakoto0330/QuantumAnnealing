@@ -8,7 +8,7 @@ import utils
 import time
 
 # 問題サイズ N=2,4,6,8,10,12,14,16 で実行
-for N in range(2, 16, 2):
+for N in range(8, 16, 2):
     # 問題設定（正方格子グラフにおける頂点被覆）
     q = gen_symbols(BinaryPoly, N, N)
 
@@ -24,12 +24,16 @@ for N in range(2, 16, 2):
     client = HitachiClient()
     client.token = get_token()
     client.parameters.num_executions = 1
-    client.parameters.outputs.execution_time = True
+    client.parameters.outputs.energies = False
+    client.parameters.outputs.spins = False
+    client.parameters.outputs.execution_time = False
+    client.parameters.outputs.num_outputs = 1
     client.parameters.temperature_num_steps = 10
     client.parameters.temperature_step_length = 100
     client.parameters.temperature_initial = 100.0
     client.parameters.temperature_target = 0.02
 
+    # ソルバー生成
     solver = Solver(client)
 
     # 重み変更してアニーリング実行
@@ -51,12 +55,16 @@ for N in range(2, 16, 2):
             num_optimum = 0      # 最適解が導かれた回数
             sum_exe_time = 0.0   # 実行時間の総和
             for _ in range(num_execution):
-                # 通信時間を含む計算実行時間の計測
-                start_time = time.perf_counter()
-                result = solver.solve(energy_function)
-                end_time = time.perf_counter()
+                try:
+                    # 通信時間を含む計算実行時間の計測
+                    start_time = time.perf_counter()
+                    result = solver.solve(energy_function)
+                    end_time = time.perf_counter()
 
-                sum_exe_time += end_time - start_time
+                    sum_exe_time += end_time - start_time
+                except RuntimeError as e:
+                    print(e)
+                    continue
                 # 結果出力
                 _, result_is_optimum = utils.print_solver_result(N, result)
                 if result_is_optimum:
