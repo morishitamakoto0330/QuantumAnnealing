@@ -7,8 +7,8 @@ import utils
 
 import time
 
-# 問題サイズ N=2,4,6,8,10,12,14,16 で実行
-for N in range(8, 16, 2):
+# 問題サイズ N=2,4,6,8,10,12,14,16 で実験
+for N in range(2, 16 + 1, 2):
     # 問題設定（正方格子グラフにおける頂点被覆）
     q = gen_symbols(BinaryPoly, N, N)
 
