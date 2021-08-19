@@ -38,8 +38,8 @@ for N in [16]:
     solver = Solver(client)
 
     # 重み変更してアニーリング実行
-    w_step = 0.1           # 重み変更幅
-    num_steps = 50         # 重み変更回数
+    w_step = 1           # 重み変更幅
+    num_steps = 5         # 重み変更回数
     num_execution = 100    # アニーリング実行回数
 
     print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
