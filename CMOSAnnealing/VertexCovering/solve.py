@@ -8,7 +8,8 @@ import utils
 import time
 
 # 問題サイズ N=2,4,6,8,10,12,14,16 で実験
-for N in range(2, 16 + 1, 2):
+#for N in range(2, 16 + 1, 2):
+for N in [16]:
     # 問題設定（正方格子グラフにおける頂点被覆）
     q = gen_symbols(BinaryPoly, N, N)
 
@@ -38,8 +39,8 @@ for N in range(2, 16 + 1, 2):
 
     # 重み変更してアニーリング実行
     w_step = 0.1           # 重み変更幅
-    num_steps = 10         # 重み変更回数
-    num_execution = 100     # アニーリング実行回数
+    num_steps = 50         # 重み変更回数
+    num_execution = 100    # アニーリング実行回数
 
     print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
     # 結果出力用ファイルを開く
