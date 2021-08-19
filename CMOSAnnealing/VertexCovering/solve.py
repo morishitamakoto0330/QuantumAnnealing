@@ -55,6 +55,7 @@ for N in [16]:
 
             num_optimum = 0      # 最適解が導かれた回数
             sum_exe_time = 0.0   # 実行時間の総和
+            num_skip = 0         # RuntimeError でスキップされた回数
             for _ in range(num_execution):
                 try:
                     # 通信時間を含む計算実行時間の計測
@@ -64,6 +65,7 @@ for N in [16]:
 
                     sum_exe_time += end_time - start_time
                 except RuntimeError as e:
+                    num_skip += 1
                     print(e)
                     continue
                 # 結果出力
@@ -71,9 +73,9 @@ for N in [16]:
                 if result_is_optimum:
                     num_optimum += 1
             # 最適回答率
-            percentage_of_optimum = (num_optimum / num_execution) * 100
+            percentage_of_optimum = (num_optimum / (num_execution - num_skip)) * 100
             # 実行時間
-            exe_time = sum_exe_time / num_execution
+            exe_time = sum_exe_time / (num_execution - num_skip)
             result_str = '{0}, {1}, {2}, {3}, {4}\n'.format(N, w_a, w_b, percentage_of_optimum, exe_time)
             # ログ出力
             print(result_str, end="")
