@@ -8,9 +8,8 @@ import utils
 import time
 
 # 問題サイズ N=2,4,6,8,10,12,14,16 で実験
-#for N in range(2, 16 + 1, 2):
-for N in [16]:
-    # 問題設定（正方格子グラフにおける頂点被覆）
+for N in range(2, 16 + 1, 2):
+    # QUBO変数の2次元配列（正方格子グラフに対応）
     q = gen_symbols(BinaryPoly, N, N)
 
     # コスト関数（w_b で調整）
@@ -26,7 +25,7 @@ for N in [16]:
     client.token = get_token()
     client.parameters.num_executions = 1
     client.parameters.outputs.energies = False
-    client.parameters.outputs.spins = False
+    client.parameters.outputs.spins = True
     client.parameters.outputs.execution_time = False
     client.parameters.outputs.num_outputs = 1
     client.parameters.temperature_num_steps = 10
@@ -38,8 +37,8 @@ for N in [16]:
     solver = Solver(client)
 
     # 重み変更してアニーリング実行
-    w_step = 1           # 重み変更幅
-    num_steps = 5         # 重み変更回数
+    w_step = 0.1           # 重み変更幅
+    num_steps = 10         # 重み変更回数
     num_execution = 100    # アニーリング実行回数
 
     print('N, w_a, w_b, optimal_answer_percentage[%], time[s]')
@@ -69,7 +68,8 @@ for N in [16]:
                     print(e)
                     continue
                 # 結果出力
-                _, result_is_optimum = utils.print_solver_result(N, result)
+                str_spin, result_is_optimum = utils.print_solver_result(N, result)
+                #print(str_spin)
                 if result_is_optimum:
                     num_optimum += 1
             # 最適回答率
